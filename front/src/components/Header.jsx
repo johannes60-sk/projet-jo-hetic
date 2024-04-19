@@ -10,6 +10,7 @@ import {
   } from "@/components/ui/navigation-menu"
 import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu"
 import logo from '../assets/logo_jo.png'
+import { Link } from "react-router-dom"
 
   
 
@@ -19,13 +20,19 @@ const Header = () => {
         <NavigationMenu>
             <NavigationMenuList>
                 <NavigationMenuItem>
-                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>Accueil</NavigationMenuLink>
+                    <Link to='/'>
+                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>Accueil</NavigationMenuLink>
+                    </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>News</NavigationMenuLink>
+                    <Link to='/news'>
+                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>News</NavigationMenuLink>
+                    </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>Planning</NavigationMenuLink>
+                    <Link to='/planning'>
+                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>Planning</NavigationMenuLink>
+                    </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                     <NavigationMenuTrigger>Classement</NavigationMenuTrigger>
@@ -34,14 +41,18 @@ const Header = () => {
                     </NavigationMenuContent>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>Athlètes</NavigationMenuLink>
+                    <Link to='/athletes'>
+                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>Athlètes</NavigationMenuLink>
+                    </Link>
                 </NavigationMenuItem>
             </NavigationMenuList>
         </NavigationMenu>
 
-        <div className="w-16 absolute top-0 left-[47%] z-10">
-            <img src={logo} alt="logo" />
-        </div>
+        <Link to='/'>
+            <div className="w-16 absolute top-0 left-[47%] z-10">
+                <img src={logo} alt="logo" />
+            </div>
+        </Link>
 
         <NavigationMenu>
             <NavigationMenuList className=''>
