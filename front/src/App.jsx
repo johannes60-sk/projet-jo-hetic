@@ -1,16 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, React } from "react";
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import Statistics from "./pages/Statistics";
+import AdminDashboard from "./pages/AdminDashboard";
+import ProtectedRoute from "./components/routes/ProtectedRoute";
+import AdminRoute from "./components/routes/AdminRoute";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const isAuthenticated = true;
 
   return (
-    <>
-      <p className='bg-slate-300 py-4'>Hello world</p>
-    </>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/statistics" element={<ProtectedRoute><Statistics></Statistics></ProtectedRoute>}/>
+        <Route path="/admin-dashboard" element={<AdminRoute><AdminDashboard></AdminDashboard></AdminRoute>}/>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
