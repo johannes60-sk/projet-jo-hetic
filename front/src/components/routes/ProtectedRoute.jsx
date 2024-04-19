@@ -7,13 +7,13 @@ import AdminRoute from './AdminRoute';
 import Header from '../Header';
 import Home from '../../pages/Home';
 
-const ProtectedRoute = ({ children, isAuthenticated = true}) => {
-    console.log('ProtectedRoute', isAuthenticated);
+const ProtectedRoute = ({ children}) => {
+
+    const isAuthenticated = JSON.parse(sessionStorage.getItem('user')); 
     return isAuthenticated ? (
         <>
             <Header />
             <Routes>
-                <Route exact path="/" element={<Home />} />
                 <Route path="/statistics" element={<Statistics />}/>
                 <Route path="/athletes" element={<Athletes />} />
                 <Route path="/admin-dashboard" element={<AdminRoute><AdminDashboard></AdminDashboard></AdminRoute>}/>

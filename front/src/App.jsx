@@ -15,26 +15,15 @@ import Header from "./components/Header";
 function App() {
 
   return (
-<<<<<<< HEAD
-    <BrowserRouter>
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/logout" element={<Logout />} />
-        <Route path="/statistics" element={<ProtectedRoute><Statistics></Statistics></ProtectedRoute>}/>
-        <Route path="/admin-dashboard" element={<AdminRoute><AdminDashboard></AdminDashboard></AdminRoute>}/>
-      </Routes>
-    </BrowserRouter>
-=======
       <BrowserRouter>
         <Routes>
+          <Route exact path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/*" element={<ProtectedRoute isAuthenticated={isAuthenticated} />} />
+          <Route path="/Logout" element={<Logout />} />
+          <Route path="/*" element={<ProtectedRoute />} />
         </Routes>
       </BrowserRouter>
->>>>>>> master
   );
 }
 

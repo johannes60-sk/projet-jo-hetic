@@ -1,8 +1,10 @@
 import React from "react";
+import Header from "../components/Header";
 
 const PublicPage = () => {
   return (
     <>
+      <Header />
       <div>Home ! Public Page</div>
       <button
         type="submit"
