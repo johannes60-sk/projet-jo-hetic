@@ -1,10 +1,11 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 
-const AdminRoute = ({ children, isAdmin = true}) => {
-    console.log('ProtectedRoute', isAdmin);
-    return isAdmin ? children : (
-        <Navigate to="/Home" replace />
+const AdminRoute = ({ children}) => {
+    const userAdmin = JSON.parse(sessionStorage.getItem('user'));
+    const isAdmin = userAdmin?.role;
+    return isAdmin === 'admin' ? children : (
+        <Navigate to="/" replace />
     );
 };
 
