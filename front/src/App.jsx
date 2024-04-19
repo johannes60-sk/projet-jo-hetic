@@ -15,22 +15,13 @@ function App() {
   const isAuthenticated = true;
 
   return (
-    <>
-      {
-        isAuthenticated && <Header />
-      }
-
       <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/statistics" element={<ProtectedRoute><Statistics></Statistics></ProtectedRoute>}/>
-          <Route path="/athletes" element={<ProtectedRoute><Athletes /></ProtectedRoute>} />
-          <Route path="/admin-dashboard" element={<AdminRoute><AdminDashboard></AdminDashboard></AdminRoute>}/>
+          <Route path="/*" element={<ProtectedRoute isAuthenticated={isAuthenticated} />} />
         </Routes>
       </BrowserRouter>
-    </>
   );
 }
 
