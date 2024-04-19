@@ -36,7 +36,7 @@ export default function Register() {
     event.preventDefault();
     console.log("formValue", formValues);
     sessionStorage.setItem("user", JSON.stringify(formValues));
-    navigate("/Home");
+    navigate("/");
   };
 
   return (

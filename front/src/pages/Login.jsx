@@ -1,12 +1,14 @@
 import React from "react";
 import { useState } from "react";
-import { Link, redirect, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [formValues, setFormValues] = useState({
     email: "",
     password: "",
   });
+
+  const navigate = useNavigate();
 
   const handlePseudoChange = (event) => {
     setFormValues({
@@ -25,7 +27,8 @@ export default function Login() {
   const handleLoginSubmit = (event) => {
     event.preventDefault();
     console.log("logged", formValues);
-    JSON.parse(sessionStorage.setItem("users"));
+    sessionStorage.setItem("user", JSON.stringify(formValues));
+    navigate("/");
   };
 
   return (
