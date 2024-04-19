@@ -15,6 +15,9 @@ import { Link } from "react-router-dom"
   
 
 const Header = () => {
+
+    const isAuthenticated = sessionStorage.getItem('user') ? true : false
+
   return (
     <header className="w-screen shadow-md flex justify-between py-4 px-2 relative">
         <NavigationMenu>
@@ -55,14 +58,38 @@ const Header = () => {
         </Link>
 
         <NavigationMenu>
-            <NavigationMenuList className=''>
-                <NavigationMenuItem>
-                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>Connexion</NavigationMenuLink>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>Inscription</NavigationMenuLink>
-                </NavigationMenuItem>
-            </NavigationMenuList>
+
+            {
+                isAuthenticated ? (
+                    <NavigationMenuList>
+                        <NavigationMenuItem>
+                            <Link to='/profile'>
+                                <NavigationMenuLink className={navigationMenuTriggerStyle()}>Profil</NavigationMenuLink>
+                            </Link>
+                        </NavigationMenuItem>
+                        <NavigationMenuItem>
+                            <Link to='/logout'>
+                                <NavigationMenuLink className={navigationMenuTriggerStyle()}>Déconnexion</NavigationMenuLink>
+                            </Link>
+                        </NavigationMenuItem>
+                    </NavigationMenuList>
+                )
+                : (
+                    <NavigationMenuList className=''>
+                        <NavigationMenuItem>
+                            <Link to='/login'>
+                                <NavigationMenuLink className={navigationMenuTriggerStyle()}>Connexion</NavigationMenuLink>
+                            </Link>
+                        </NavigationMenuItem>
+                        <NavigationMenuItem>
+                            <Link to='/register'>
+                                <NavigationMenuLink className={navigationMenuTriggerStyle()}>Inscription</NavigationMenuLink>
+                            </Link>
+                        </NavigationMenuItem>
+                    </NavigationMenuList>
+                )
+            }
+
         </NavigationMenu>
     </header>
   )
