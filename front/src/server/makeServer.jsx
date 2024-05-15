@@ -12,7 +12,7 @@ export const makeServer = new Server({
                 { id: 5, firstName: 'Mohamed', lastName: 'Salah', country: '🇪🇬', medails: { gold: 4, silver: 10, bronze: 30 }},
             ];
         });
-
+// hello world
         this.get('/medals', () => {
             return [
                 { id: 1, name: 'États-Unis', medals: { gold: 39, silver: 41, bronze: 33, totals: 113 }},
