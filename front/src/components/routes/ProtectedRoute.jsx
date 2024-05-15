@@ -5,6 +5,7 @@ import Athletes from '../../pages/Athletes';
 import Statistics from '../../pages/Statistics';
 import AdminRoute from './AdminRoute';
 import Header from '../Header';
+import Footer from '../Footer';
 import Home from '../../pages/Home';
 import CountryMedals from '../../pages/CountryMedals';
 
@@ -20,6 +21,7 @@ const ProtectedRoute = ({ children }) => {
                 <Route path="/country-medals" element={<CountryMedals />} />
                 <Route path="/admin-dashboard" element={<AdminRoute><AdminDashboard></AdminDashboard></AdminRoute>} />
             </Routes>
+            <Footer/>
         </>
     ) : (
         <Navigate to="/Login" replace />
