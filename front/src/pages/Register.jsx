@@ -1,10 +1,9 @@
-import React from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Register() {
   const [formValues, setFormValues] = useState({
-    pseudo: "",
+    username: "",
     email: "",
     password: "",
   });
@@ -14,7 +13,7 @@ export default function Register() {
   const handlePseudoChange = (event) => {
     setFormValues({
       ...formValues,
-      pseudo: event.target.value,
+      username: event.target.value,
     });
   };
 
@@ -32,12 +31,34 @@ export default function Register() {
     });
   };
 
-  const handleRegisterSubmit = (event) => {
-    event.preventDefault();
-    console.log("formValue", formValues);
-    sessionStorage.setItem("user", JSON.stringify(formValues));
-    navigate("/");
-  };
+  // const handleRegisterSubmit = (event) => {
+  //   event.preventDefault();
+  //   console.log("formValue", formValues);
+  //   sessionStorage.setItem("user", JSON.stringify(formValues));
+  //   navigate("/");
+  // };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    fetch("http://localhost:3000/users/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formValues),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+        // sessionStorage.setItem("user", JSON.stringify(data));
+        // navigate("/");
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+
+  }
 
   return (
     <>
@@ -61,11 +82,11 @@ export default function Register() {
               </h1>
               <form
                 className="space-y-4 md:space-y-6"
-                onSubmit={handleRegisterSubmit}
+                onSubmit={handleSubmit}
               >
                 <div>
                   <label
-                    for="email"
+                    htmlFor="pseudo"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Pseudo
@@ -82,7 +103,7 @@ export default function Register() {
                 </div>
                 <div>
                   <label
-                    for="email"
+                    htmlFor="email"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Your email
@@ -99,7 +120,7 @@ export default function Register() {
                 </div>
                 <div>
                   <label
-                    for="password"
+                    htmlFor="password"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Password
@@ -127,7 +148,7 @@ export default function Register() {
                   </div>
                   <div className="ml-3 text-sm">
                     <label
-                      for="terms"
+                      htmlFor="terms"
                       className="font-light text-gray-500 dark:text-gray-300"
                     >
                       I accept the{" "}

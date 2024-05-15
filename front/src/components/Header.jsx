@@ -14,9 +14,7 @@ import { Link } from "react-router-dom"
 
   
 
-const Header = () => {
-
-    const isAuthenticated = sessionStorage.getItem('user') ? true : false
+const Header = (isLogged) => {
 
   return (
     <header className="w-screen shadow-md flex justify-between py-4 px-2 relative">
@@ -60,7 +58,7 @@ const Header = () => {
         <NavigationMenu>
 
             {
-                isAuthenticated ? (
+                isLogged ? (
                     <NavigationMenuList>
                         <NavigationMenuItem>
                             <Link to='/profile'>

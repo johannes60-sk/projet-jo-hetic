@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -13,7 +13,7 @@ export default function Login() {
   const handlePseudoChange = (event) => {
     setFormValues({
       ...formValues,
-      pseudo: event.target.value,
+      email: event.target.value,
     });
   };
 
@@ -24,15 +24,59 @@ export default function Login() {
     });
   };
 
-  const handleLoginSubmit = (event) => {
-    event.preventDefault();
-    console.log("logged", formValues);
-    sessionStorage.setItem("user", JSON.stringify(formValues));
-    navigate("/");
-  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    fetch("http://localhost:3000/users/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formValues),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+        document.cookie = `jwt=${data.token}; expires=${new Date(Date.now() + 3600 * 60).toUTCString()}`;
+        // sessionStorage.setItem("user", JSON.stringify(data));
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }
+
+  // log cookies
+  console.log(document.cookie);
+
+  useEffect(() => {
+    // console.log(document.cookie.startsWith("token="));
+
+    if (document.cookie) {
+      document.cookie.split(";").forEach((cookie) => {
+        console.log(cookie);
+      });
+    }
+
+  }, [document.cookie]);
+
+  // delete cookie
+  const deleteCookie = () => {
+    // console.log(document.cookie.split(";"));
+    for(let cookie of document.cookie.split(";")) {
+      // console.log('ok')
+      // console.log(cookie.startsWith("jwt="));
+      if(cookie.trim().startsWith("jwt=")) {
+        console.log('cookie')
+        const newCookie = cookie.replace("jwt=", "");
+        document.cookie = `jwt=${newCookie}; expires=Thu, 01 Jan 1970 00:00:00 UTC}`;
+      }
+    }
+  }
 
   return (
     <>
+    <button onClick={deleteCookie}>Delete cookie</button>
       <section className="bg-gray-50 dark:bg-gray-900">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           <a
@@ -51,10 +95,10 @@ export default function Login() {
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                 Se connecter
               </h1>
-              <form className="space-y-4 md:space-y-6" onSubmit={handleLoginSubmit}>
+              <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
                 <div>
                   <label
-                    for="email"
+                    htmlFor="email"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Pseudo
@@ -71,7 +115,7 @@ export default function Login() {
                 </div>
                 <div>
                   <label
-                    for="password"
+                    htmlFor="password"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Password
