@@ -1,7 +1,6 @@
 import {
     NavigationMenu,
     NavigationMenuContent,
-    NavigationMenuIndicator,
     NavigationMenuItem,
     NavigationMenuLink,
     NavigationMenuList,
@@ -14,9 +13,9 @@ import { Link } from "react-router-dom"
 
   
 
-const Header = (isLogged) => {
+const Header = ({isLogged}) => {
 
-  return (
+  return location.pathname !== '/Login' && location.pathname !== '/register' && (
     <header className="w-screen shadow-md flex justify-between py-4 px-2 relative">
         <NavigationMenu>
             <NavigationMenuList>

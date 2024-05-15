@@ -53,6 +53,7 @@ export default function Register() {
         console.log("Success:", data);
         // sessionStorage.setItem("user", JSON.stringify(data));
         // navigate("/");
+        window.location.href = "/Login";
       })
       .catch((error) => {
         console.error("Error:", error);

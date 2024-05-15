@@ -1,9 +1,6 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 const Logout = () => {
-
-    const navigate = useNavigate();
 
     const deleteCookie = () => {
         for(let cookie of document.cookie.split(";")) {
@@ -17,7 +14,7 @@ const Logout = () => {
 
     useEffect(() => {
         deleteCookie();
-        navigate("/Login");
+        window.location.href = "/";
     },[])
 };
 

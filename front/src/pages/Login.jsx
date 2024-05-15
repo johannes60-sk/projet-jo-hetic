@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -39,7 +39,8 @@ export default function Login() {
         console.log("Success:", data);
         document.cookie = `jwt=${data.token}; expires=${new Date(Date.now() + 3600 * 60).toUTCString()}`;
         // sessionStorage.setItem("user", JSON.stringify(data));
-        navigate("/");
+        // navigate("/");
+        window.location.href = "/";
       })
       .catch((error) => {
         console.error("Error:", error);
