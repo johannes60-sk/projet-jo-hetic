@@ -16,7 +16,7 @@ import { Link } from "react-router-dom"
 
 const Header = () => {
   return (
-    <header className="w-screen shadow-md flex justify-between py-4 px-2 relative">
+    <header className="w-screen fixed mb-5 shadow-md flex justify-between py-4 px-2 ">
         <NavigationMenu>
             <NavigationMenuList>
                 <NavigationMenuItem>

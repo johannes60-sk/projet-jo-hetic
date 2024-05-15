@@ -2,7 +2,7 @@
 const Planning = () => {
 
   return (
-      <div class="container my-10">
+      <div class="container my-8">
         <div class="wrapper bg-white rounded shadow w-full ">
           <div class="header flex justify-between border-b p-2">
             <span class="text-lg font-bold">2020 July</span>
