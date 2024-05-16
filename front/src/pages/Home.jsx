@@ -1,5 +1,7 @@
 import React from "react";
 import Header from "../components/Header";
+import Footer from "./../components/Footer";
+import HomeCard from "./../components/HomeCard";
 import banniere_jo from "../assets/img/banniere_jo.jpg";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -31,7 +33,7 @@ const PublicPage = () => {
       </div>
 
       <div className="container bg-zinc-100">
-        <div className="flex justify-center items-center ">
+        <div className="flex justify-center items-center pt-8 ">
           <div className="w-full max-w-lg mt-8">
             <Carousel
               opts={{
@@ -68,18 +70,29 @@ const PublicPage = () => {
           </div>
         </div>
 
-        <div class="flex justify-between my-8">
-          <div class="flex-1 h-28 bg-black mx-2">Block 1</div>
-          <div class="flex-1 h-28 bg-slate-500 mx-2">Block 2</div>
-          <div class="flex-1 h-28 bg-zinc-900 mx-2">Block 3</div>
-          <div class="flex-1 h-28 bg-blue-500 mx-2">Block 4</div>
+        <div className="my-20 ">
+          <h2 className="text-4xl font-semibold ml-20">News</h2>
+          <div className="flex justify-center  my-5 p-0 w-4/5 mx-auto">
+            <div className="flex-1 ">
+              <HomeCard img={sport_basket}/>
+            </div>
+            <div className="flex-1 ">
+              <HomeCard img={sport_running}/>
+            </div>
+            <div className="flex-1 ">
+              <HomeCard img={sport_golf}/>
+            </div>
+          </div>
         </div>
 
         <div className="mt-5">
-          <h2 className="text-2xl font-semibold">Planning</h2>
+          <h2 className="text-4xl ml-20 font-semibold">Planning</h2>
+          <Planning />
         </div>
+      </div>
 
-        <Planning />
+      <div>
+        <Footer />
       </div>
     </>
   );
