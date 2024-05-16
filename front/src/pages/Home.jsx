@@ -89,10 +89,6 @@ const PublicPage = () => {
           <Planning />
         </div>
       </div>
-
-      <div>
-        <Footer />
-      </div>
     </>
   );
 };
