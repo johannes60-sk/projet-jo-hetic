@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "../components/Header";
-import Footer from "./../components/Footer";
 import HomeCard from "./../components/HomeCard";
 import banniere_jo from "../assets/img/banniere_jo.jpg";
 import { Card, CardContent } from "@/components/ui/card";
