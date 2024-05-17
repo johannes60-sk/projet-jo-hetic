@@ -9,6 +9,7 @@ import Statistics from "./pages/Statistics";
 import AdminDashboard from "./pages/AdminDashboard";
 import ProtectedRoute from "./components/routes/ProtectedRoute";
 import AdminRoute from "./components/routes/AdminRoute";
+import News from "./pages/News";
 import Athletes from "./pages/Athletes";
 import Header from "./components/Header";
 
