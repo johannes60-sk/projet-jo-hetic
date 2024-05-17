@@ -15,7 +15,7 @@ const Athletes = () => {
     const [data, setData] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5174/api/athletes')
+        fetch('http://localhost:5173/api/athletes')
             .then(response => response.json())
             .then(data => setData(data))
             .catch(e => console.error(e))
