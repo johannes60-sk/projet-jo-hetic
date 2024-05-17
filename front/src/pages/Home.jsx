@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const PublicPage = () => {
   return (
@@ -12,6 +13,7 @@ const PublicPage = () => {
       >
         Admin
       </button>
+      <Footer />
     </>
   );
 };

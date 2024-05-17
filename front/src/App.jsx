@@ -15,15 +15,15 @@ import Header from "./components/Header";
 function App() {
 
   return (
-      <BrowserRouter>
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/Logout" element={<Logout />} />
-          <Route path="/*" element={<ProtectedRoute />} />
-        </Routes>
-      </BrowserRouter>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/Logout" element={<Logout />} />
+        <Route path="/*" element={<ProtectedRoute />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
