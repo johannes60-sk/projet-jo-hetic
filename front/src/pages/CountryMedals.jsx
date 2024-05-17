@@ -49,7 +49,7 @@ export default function CountryMedals() {
 
     useEffect(() => {
         if(!receivedData) {
-            fetch('http://localhost:5174/api/medals')
+            fetch('http://localhost:5173/api/medals')
             .then(response => response.json())
             .then(data => {
                 setCountriesData(data)
